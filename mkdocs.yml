@@ -4,7 +4,8 @@ repo_url: https://github.com/CALM-LMU/YeastMate/
 nav:
     - Introduction: 'index.md'
     - Installation: 'installation.md'
-    - User interface: 'gui.md'
+    - Get Started: 'getstarted.md'
+    - Settings: 'settings.md'
     - Fiji plugin: 'fiji.md'
     - Label your images: 'label.md'
     - Train on your data: 'train.md'
