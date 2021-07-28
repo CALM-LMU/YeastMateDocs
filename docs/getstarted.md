@@ -6,9 +6,32 @@ After installing YeastMate (and potentially setting up the Docker detection cont
 
 This page shows all currently queued and running tasks.
 
-## Start a new job
+## Starting a new detection job
 
+To start detecting on your images, click ```Start detection job``` in the sidebar.
 From here you can start your inference jobs for a given path containing your images. You can only include or exclude specific files by setting their respective tags.
+
+[screenshot]
+[explain options of submit a new job]
+
+
+
+### Input data format
+
+YeastMate expects the input folder to contain TIFF files or a folder called ```yeastmate-preprocessed``` containing TIFF files. We support multiple channels or timepoints in files, in which case the dimension order should be TZCYX (default for TIFF images saved by ImageJ/Fiji). If the dimension order of your images differs, you can optionally resave them in the correct format via the Preprocessing options.
+
+### Output format
+
+After YeastMate detects cells in your images, it will save the single cell instances segmentation masks as ```[input_file_name]_mask.tif``` as well as asignments of the individual cells to multicellular events in a JSON file called ```[input_file_name]_detections.json```, which has the following format:
+
+```json
+{
+
+}
+```
+
+
+## Options
 
 From there you can start three different jobs: 
 
