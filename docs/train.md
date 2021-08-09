@@ -2,6 +2,8 @@
 
 We provide an easy workflow for re-training the detection model on your own data. The model training requires at least one GPU and CUDA version >= 10.1.
 
+Network training usually takes 4-5GB of GPU RAM, this can be further reduced by setting the batch size from 2 to 1 in the *yeastmate.yaml* config file.
+
 ## Prepare your data
 
 After annotating your images as in [Label your images](./label.md), you can use these images to train your own model.
@@ -31,6 +33,12 @@ You can then start the training container with the following command. Change the
 
 ``` bash
 docker run -it --shm-size=50G --mount source=YOUR/INPUT/PATH,target=/home/appuser/input,type='bind' --mount source=YOUR/OUTPUT/PATH,target=/home/appuser/output,type='bind' --gpus all davidbunk/yeastmatedetectron:latest
+```
+
+If you don't want to expose all of your GPUs, you can select a specific GPU device like this:
+
+``` bash
+docker run -it --shm-size=50G --mount source=YOUR/INPUT/PATH,target=/home/appuser/input,type='bind' --mount source=YOUR/OUTPUT/PATH,target=/home/appuser/output,type='bind' --gpus '"device=0"' davidbunk/yeastmatedetectron:latest
 ```
 
 The Docker container automatically starts as root user. To change to a non-root user for training type in:
