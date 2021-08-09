@@ -47,12 +47,8 @@ This page allows you to inspect and correct the predicted objects and masks, or 
 
 Check [Label your images](./label.md) for more information on labelling your data.
 
-## Retrain your network
+## Retraining the model
 
-Here you can start a training run of the model on your own data. This may boost performance of the model on your specific dataset. Note that this only works with the Docker backend, and at least one fast GPU is recommended for acceptable training times.
+You can start a training run of the model on your own data after annotating it like above. This may boost performance of the model on your specific dataset. Note that this only works with the Docker backend, and at least one fast GPU is recommended for acceptable training times.
 
 Check [Train on your data](./train.md) for more information on training on your data.
-
-## Benchmark network
-
-Should we add this? Not sure.
