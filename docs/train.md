@@ -1,6 +1,6 @@
 # Train on your own data
 
-We provide an easy workflow for re-training the detection model on your own data. The model training requires at least one GPU and CUDA version >= 10.1.
+We provide an easy workflow for re-training the detection model on your own data. The model training requires at least one GPU and CUDA version >= 10.2.
 
 Network training usually takes 4-5GB of GPU RAM, this can be further reduced by setting the batch size from 2 to 1 in the *yeastmate.yaml* config file.
 
@@ -17,46 +17,15 @@ The two config files can be found in [YeastMate/BioDetectron/biodetectron/config
 
 If you want to continue training on existing model weights, add them next to the config files and set their name in **MODEL.WEIGHTS** in *yeastmate.yaml* . 
 
-## Prepare your Docker container
 
-We provide a Docker image with a prepared environment for easy training with only a few commands. If you don't want to use the Docker training image, skip to [Start training without Docker](#start-training-without-docker).
+## Start training within Docker container
 
-If you don't already have Docker installed, you can find an installation guide at the [Docker docs](https://docs.docker.com/engine/install/).
+Create and run the Docker container as explained in [Prepare environment](./environment.md).
 
-When Docker is ready, download the training image with:
-
-``` bash
-docker pull davidbunk/yeastmatedetectron:latest
-```
-
-You can then start the training container with the following command. Change the source input and output paths to your respective folders.
+You can then start the training process with:
 
 ``` bash
-docker run -it --shm-size=50G --mount source=YOUR/INPUT/PATH,target=/home/appuser/input,type='bind' --mount source=YOUR/OUTPUT/PATH,target=/home/appuser/output,type='bind' --gpus all davidbunk/yeastmatedetectron:latest
-```
-
-If you don't want to expose all of your GPUs, you can select a specific GPU device like this:
-
-``` bash
-docker run -it --shm-size=50G --mount source=YOUR/INPUT/PATH,target=/home/appuser/input,type='bind' --mount source=YOUR/OUTPUT/PATH,target=/home/appuser/output,type='bind' --gpus '"device=0"' davidbunk/yeastmatedetectron:latest
-```
-
-The Docker container automatically starts as root user. To change to a non-root user for training type in:
-
-``` bash
-su appuser
-```
-
-The Docker user on the host machine requires read access to the input folder and read/write access to the output folder. Check these permissions if the training fails with permission errors. 
-
-If that doesn't solve these errors, you can train as root user by skipping the command above. Although this is not necessarily problematic, it also comes with the usual risks of running commands as root.
-
-## Start training in Docker container
-
-You can then start the actual training process with:
-
-``` bash
-python ./biodetectron/train.py --config=/home/appuser/input/yeastmate.yaml
+python ./yeastmatepredictor/train.py --config=/home/appuser/input/yeastmate.yaml
 ```
 
 ## Start training without Docker

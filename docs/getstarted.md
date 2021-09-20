@@ -1,20 +1,16 @@
 # How to use the YeastMate user interface
 
-After installing YeastMate (and potentially setting up the Docker detection container), you can get right to processing your images by opening the user interface. It should open a terminal for the backend in the background, or two separate instances if you are using the local detection backend. If these are not opening or closing instantly, you can file a bug report [here](https://github.com/CALM-LMU/YeastMate/issues)
-
-## Job dashboard
-
-This page shows all currently queued and running tasks.
+After installing YeastMate (and potentially setting up the detection server yourself), you can get right to processing your images by opening the user interface.
 
 ## Starting a new detection job
 
-To start detecting on your images, click ```Start detection job``` in the sidebar.
-From here you can start your inference jobs for a given path containing your images. You can only include or exclude specific files by setting their respective tags.
+The landing page allows you to start the IO and Detection backends and submit new jobs to it.
 
-[screenshot]
-[explain options of submit a new job]
+If you have setup external backends, you can point the GUI to these at the [Backend settings](./settings.md); else you can just start the local backends with the ```Start backends``` button. A terminal window will appear for each backend; with their status showing in the GUI. If you have set external backends, the GUI will send status requests and also show their status.
 
+You can set tags to include or exclude files containing them:
 
+# ![Screenshot](imgs/newjob.png)
 
 ### Input data format
 
@@ -30,16 +26,20 @@ After YeastMate detects cells in your images, it will save the single cell insta
 }
 ```
 
-
 ## Options
 
-From there you can start three different jobs: 
-
-* Preprocessing: If your images are not tiff/png/jpeg files, or need to align your images, you can preprocess your data first, else you can skip this step.
+From there you can select the presets you set on their respective [settings pages](./settings.md) for three different jobs: 
 
 * Detection: The main job which performs inference on your images and save a segmentation mask and additional detection metadata.
 
+* Preprocessing: If your images are not tiff/png/jpeg files, or need to align your images, you can preprocess your data first, else you can skip this step.
+
 * Export: If you want to further sort your detected objects or crop your images around specific objects, this job will perform additional export tasks.
+
+## Job dashboard
+
+This page shows the status of the backends and all currently queued and running tasks.
+
 
 ## Correct and label your images
 
@@ -49,6 +49,6 @@ Check [Label your images](./label.md) for more information on labelling your dat
 
 ## Retraining the model
 
-You can start a training run of the model on your own data after annotating it like above. This may boost performance of the model on your specific dataset. Note that this only works with the Docker backend, and at least one fast GPU is recommended for acceptable training times.
+You can start a training run of the model on your own data after annotating it like above. This may boost performance of the model on your specific dataset. You need to setup a [Python environment](./environment.md), and at least one fast GPU is recommended for acceptable training times.
 
 Check [Train on your data](./train.md) for more information on training on your data.

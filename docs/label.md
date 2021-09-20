@@ -20,7 +20,7 @@ Make sure the start and the end of all lines are inside the correct cells, so th
 To delete a label, you have to first select it with the "select vertices" (Hotkey: "D") tool and then click on the "delete selected shapes" tool (Hotkey: "Del" or "Backspace")
 If a line ends on the background instead of a cell, when trying to advance to the next image a keyerror will appear on the bottom right corner, showing a "0". In that case double check and correct all lines, which do not end on a marked cell.
 
-# ![Logo](imgs/Tools.png)
+# ![Screenshot](imgs/Tools.png)
 
 # Next image 
 Once you are done with labeling all the mating and budding events, as well as correcting the mask, press "Enter" to advance to the next image.

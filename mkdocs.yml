@@ -1,6 +1,6 @@
 site_name: YeastMate
-site_url: https://example.com/
-repo_url: https://github.com/CALM-LMU/YeastMate/
+site_url: https://yeastmate.readthedocs.org/
+repo_url: https://github.com/hoerlteam/YeastMate/
 nav:
     - Introduction: 'index.md'
     - Installation: 'installation.md'
@@ -8,7 +8,7 @@ nav:
     - Settings: 'settings.md'
     - Fiji plugin: 'fiji.md'
     - Label your images: 'label.md'
+    - Prepare environment: 'environment.md'
     - Train on your data: 'train.md'
-    - Deploy & Build: 'build.md'
 theme:
     name: readthedocs
