@@ -13,7 +13,7 @@ The training script expects two folders:
 
 * An output folder where the model weights will be saved in.
 
-The two config files can be found in [YeastMate/BioDetectron/biodetectron/configs](https://github.com/davidbunk/YeastMate/BioDetectron/biodetectron/configs), both *yeastmate.yaml* and *yeastmate_advanced.yaml* are required.
+The two config files can be found in [YeastMateDetector/yeastmatedetector/configs](https://github.com/hoerlteam/YeastMateDetector/yeastmatedetector/configs), both *yeastmate.yaml* and *yeastmate_advanced.yaml* are required.
 
 If you want to continue training on existing model weights, add them next to the config files and set their name in **MODEL.WEIGHTS** in *yeastmate.yaml* . 
 
@@ -25,19 +25,19 @@ Create and run the Docker container as explained in [Prepare environment](./envi
 You can then start the training process with:
 
 ``` bash
-python ./yeastmatepredictor/train.py --config=/home/appuser/input/yeastmate.yaml
+python ./yeastmatedetector/train.py --config=/home/appuser/input/yeastmate.yaml
 ```
 
 ## Start training without Docker
 
 You can also run the training scripts without the Docker image. For this you need to setup your Python environment as in [Deploy and Build](./build.md).
 
-You need to change your input path within [YeastMate/BioDetectron/biodetectron/datasets.py](https://github.com/davidbunk/YeastMate/BioDetectron/biodetectron/datasets.py) to your real input folder, and set your real output path in the *yeastmate.yaml* config file, which needs to be in the same folder as *yeastmate_advanced.yaml*. 
+You need to change your input path within [YeastMateDetector/yeastmatedetector/datasets.py](https://github.com/hoerlteam/YeastMateDetector/yeastmatedetector/datasets.py) to your real input folder, and set your real output path in the *yeastmate.yaml* config file, which needs to be in the same folder as *yeastmate_advanced.yaml*. 
 
 From the BioDetectron folder, you can then execute:
 
 ``` bash
-python ./biodetectron/train.py --config=/PATH/TO/YOUR/yeastmate.yaml
+python ./yeastmatedetector/train.py --config=/PATH/TO/YOUR/yeastmate.yaml
 ```
 
 While not necessary, it's recommended to use [tmux](https://github.com/tmux/tmux/wiki) or similar tools to let the training run in the background without risk of interruption. 
