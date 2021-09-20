@@ -1,2 +1,2 @@
 # YeastMateDocs
-Temporary repo for YeastMateDocs
+Documentation files for yeastmate.readthedocs.org
