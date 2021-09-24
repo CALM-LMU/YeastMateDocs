@@ -1,5 +1,5 @@
 If you want to run GPU-accelerated detection or remote detection, the easiest way is to use our Docker image. For Information on how to install Docker, refer to https://docker.com.
-The Docker image can be found on [Docker hub](https://hub.docker.com/hoerlteam/YeastMate). The image can then be spun into containers and run like any other Docker image. You need to forward the internal docker port 5000 to the port you set in the user interface (default is 5000) so that the container can communicate with the user interface and other backend. If you need GPU inference, you'll also need to give the container GPU access via the ```--gpus all``` flag. To run the detection backend with GPU support, run the following command:
+The Docker image can be found on [Docker hub](https://hub.docker.com/davidbunk/YeastMate). The image can then be spun into containers and run like any other Docker image. You need to forward the internal docker port 5000 to the port you set in the user interface (default is 5000) so that the container can communicate with the user interface and other backend. If you need GPU inference, you'll also need to give the container GPU access via the ```--gpus all``` flag. To run the detection backend with GPU support, run the following command:
 
 ``` bash
 docker run -it -p 5000:5000 --rm --gpus all yeastmate:latest
@@ -22,13 +22,13 @@ docker pull hoerlteam/yeastmate:latest
 You can then start the training container with the following command. Change the source input and output paths to your respective folders.
 
 ``` bash
-docker run -it --shm-size=50G --mount source=YOUR/INPUT/PATH,target=/home/appuser/input,type='bind' --mount source=YOUR/OUTPUT/PATH,target=/home/appuser/output,type='bind' --gpus all hoerlteam/yeastmate:latest
+docker run -it --shm-size=50G --mount source=YOUR/INPUT/PATH,target=/home/appuser/input,type='bind' --mount source=YOUR/OUTPUT/PATH,target=/home/appuser/output,type='bind' --gpus all davidbunk/yeastmate:latest
 ```
 
 If you don't want to expose all of your GPUs, you can select a specific GPU device like this:
 
 ``` bash
-docker run -it --shm-size=50G --mount source=YOUR/INPUT/PATH,target=/home/appuser/input,type='bind' --mount source=YOUR/OUTPUT/PATH,target=/home/appuser/output,type='bind' --gpus '"device=0"' hoerlteam/yeastmate:latest
+docker run -it --shm-size=50G --mount source=YOUR/INPUT/PATH,target=/home/appuser/input,type='bind' --mount source=YOUR/OUTPUT/PATH,target=/home/appuser/output,type='bind' --gpus '"device=0"' davidbunk/yeastmate:latest
 ```
 
 The Docker container automatically starts as root user. To change to a non-root user for training type in:

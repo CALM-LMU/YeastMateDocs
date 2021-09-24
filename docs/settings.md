@@ -54,7 +54,9 @@ If you have time stacks, you can set them to be split into separate frame images
 
 If you don't need to align your images, and you already have ImageJ-compatible tif images, you can skip the preprocessing step. 
 
-## Export settings
+## Crop settings
+
+# ![Screenshot](imgs/crop.png)
 
 The detection job saves its results as a segmentation mask and a json file containing additional metadata. This page contains the settings if you wish to crop objects in your images and masks. Cropped masks will only contain labelled cells from the cropped object.
 
