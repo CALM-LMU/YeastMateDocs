@@ -18,6 +18,8 @@ The status of the backends will be shown; they can be started from here as well.
 
 ## Detection settings
 
+# ![Screenshot](imgs/detection.png)
+
 This page contains the various settings for the detection backend:
 
 * YeastMate detects objects on a non-fluorescent overview channel. If your images have multiple channels, check this setting and set the channel to detect on.
@@ -39,6 +41,8 @@ Flip this switch to access advanced settings for the detection:
 * If you trained your own model with images with a different pixel size than 110nm, you can set your referenze pixel size of your training images here, so that the rescaling of images is done in relation to this pixel size.
 
 ## Preprocessing settings
+
+# ![Screenshot](imgs/preprocessing.png)
 
 This page contains the settings for preprocessing and alignment of your images. 
 

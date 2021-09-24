@@ -12,7 +12,4 @@ YeastMate uses a modified Mask R-CNN neural network for detection and segmentati
 
 A FIJI plugin is available to facilitate integration etc...
 
-Correction and retraining available
-
-Check [Installation](./installation.md) and [Get Started](./getstarted.md) to start....
 

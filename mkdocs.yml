@@ -3,12 +3,12 @@ site_url: https://yeastmate.readthedocs.org/
 repo_url: https://github.com/hoerlteam/YeastMate/
 nav:
     - Introduction: 'index.md'
-    - Installation: 'installation.md'
-    - Get Started: 'getstarted.md'
-    - Settings: 'settings.md'
+    - GUI - Installation: 'installation.md'
+    - GUI - Get Started: 'getstarted.md'
+    - GUI - Settings: 'settings.md'
+    - GUI - Label your images: 'label.md'
     - Fiji plugin: 'fiji.md'
-    - Label your images: 'label.md'
-    - Prepare environment: 'environment.md'
-    - Train on your data: 'train.md'
+    - Python - Installation : 'environment.md'
+    - Python - Train on your data: 'train.md'
 theme:
     name: readthedocs

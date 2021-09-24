@@ -1,6 +1,6 @@
 # How to use the YeastMate user interface
 
-After installing YeastMate (and potentially setting up the detection server yourself), you can get right to processing your images by opening the user interface.
+After installing YeastMate, you can get right to processing your images by opening the user interface.
 
 ## Starting a new detection job
 
