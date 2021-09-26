@@ -26,6 +26,8 @@ The user interface and the two backends communicate via HTTP requests and thus n
 
 On the following pages you will find a status display for the backends with a button to start the backends. These backends are automatically set up to run locally and start on an automatically found free port. Starting the backends will open two additional terminal windows, which will take a moment to initalize and start. A message in those terminal windows as well as the status block in the GUI will indicate when they're running and ready to go.
 
+# ![Screenshot](imgs/terminals.png)
+
 ## Starting a new detection job
 
 The landing page allows you to start the IO and Detection backends and submit new jobs to it.
@@ -64,7 +66,7 @@ After YeastMate detects cells in your images, it will save the single cell insta
 
 ## Job dashboard
 
-# ![Screenshot](imgs/newjob.png)
+# ![Screenshot](imgs/dashboard.png)
 
 This page shows the status of the backends and all currently queued and running tasks.
 
@@ -78,6 +80,6 @@ Check [Label your images](./label.md) for more information on labelling your dat
 
 ## Retraining the model
 
-You can start a training run of the model on your own data after annotating it like above. This may boost performance of the model on your specific dataset. You need to setup a [Python - Get Started](./python.md), and at least one fast GPU is recommended for acceptable training times.
+You can start a training run of the model on your own data after annotating it like above. This may boost performance of the model on your specific dataset. You need to [install](./python.md) the Python module, and at least one fast GPU is recommended for acceptable training times.
 
-Check [Train on your data](./train.md) for more information on training on your data.
+Check [Python - Train on your data](./train.md) for more information on training on your data.
