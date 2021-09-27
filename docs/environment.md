@@ -1,6 +1,6 @@
 # Setting up the Python backends manually
 
-If you want to run one or two of the backends manually or remotely, you can easily run the two Python scripts as long as you have Python with YeastMate's dependencies installed. We offer two simple solutions to set this environment up: 
+If you want to run one or two of the backends manually or remotely, you can easily run the two Python scripts as long as you have Python with YeastMate's dependencies installed. Additionally, you can also forgo the user interface and its backends and use our YeastMate Python module directly to implement the detection in your Python scripts. We offer two simple solutions to set this environment up: 
 
 * Anaconda environment files which will automatically install all dependencies
 
