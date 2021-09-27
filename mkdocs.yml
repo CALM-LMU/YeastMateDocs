@@ -7,7 +7,7 @@ nav:
     - GUI - Settings: 'settings.md'
     - GUI - Label your images: 'label.md'
     - Fiji - Get Started: 'fiji.md'
-    - Python - Get Started: 'environment.md'
+    - Python - Installation: 'environment.md'
     - Python - Get Started: 'python.md'
     - Python - Train on your data: 'train.md'
 theme:
