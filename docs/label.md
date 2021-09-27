@@ -29,9 +29,9 @@ As already mentioned before, if an error "0" appears, it means that a line ends 
 
 # Useful Hotkeys
 
-Paintbrush      - "P"
-Eraser          - "E"
-Label cells     - "T"
-Select label    - "D"
-Erase selected  - "Del" or "Backspace"
-Next Image      - "Enter"
+* Paintbrush      - "P"
+* Eraser          - "E"
+* Label cells     - "T"
+* Select label    - "D"
+* Erase selected  - "Del"
+* Next Image      - "Enter"
