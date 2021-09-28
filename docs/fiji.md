@@ -1,6 +1,6 @@
 # How to use the YeastMate Fiji plugin
 
-You can download the Fiji plugin from https://github.com/hoerlteam/YeastMateFiji/releases. Just put the single ```.jar``` file into the ```plugins``` folder of you Fiji installation and YeastMate should appear under ```Plugins->YeastMate``` the next time you start Fiji.
+You can download the Fiji plugin from [https://github.com/hoerlteam/YeastMateFiji/releases](https://github.com/hoerlteam/YeastMateFiji/releases). Just put the single ```.jar``` file into the ```plugins``` folder of you Fiji installation and YeastMate should appear under ```Plugins->YeastMate``` the next time you start Fiji.
 
 The Fiji plugin requires a running instance of the detection backend. You can start the packaged detection backend from within the main GUI ([see GUI: Getting Started](./gui.md)) or directly start it with the yeastmate_server executable in the YeastMate installation folder in ```resources->python->YeastMate```. 
 
@@ -27,7 +27,7 @@ If you activate Fiji's Macro Recorder from the main menu (```Plugins->Macros->Re
 ## Example Output
 
 **Example: Segmentation mask:**
- # ![Screenshot](imgs/fiji_segmentation_mask.png)
+# ![Screenshot](imgs/fiji_segmentation_mask.png)
 
 **Example: ROIs for mating events:** 
- # ![Screenshot](imgs/fiji_segmentation_overlay.png)
+# ![Screenshot](imgs/fiji_segmentation_overlay.png)
