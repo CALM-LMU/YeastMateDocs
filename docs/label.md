@@ -1,37 +1,95 @@
-# Labeling
+# Annotate your images
 
-Instructions for using the labeling tools to correctly label the images and edit the single cell mask, as well as switching to the next image.
+YeastMate comes with a custom annotation tool built upon [Napari](https://napari.org). It allows you to inspect and correct YeastMate's output as well as annotating your own images from scratch for re-training the detection model.
 
-# The single cell mask
+After selecting your image path in the Visualize/Annotate page in the user interface, the button ```Start annotation process``` will open up a new Napari window.
 
-The single cell mask, the layer labeled as "single cell", is where all the cells should be marked. 
-Make sure to only label the cells, which you want the program to recognize, for example exclude cells, which are too much out of focus.
-To label a cell, firstly select the single cell layer. Once the layer is selected on the top left is a tool that looks like a paint brush. Either click on it or press the hotkey "P" to activate it.
-Right below the paint brush is "label" with a number. This number is the ID of the cell. Make sure to not use the same ID for two different cells.
-After you have selected the paint brush and an unused ID, you can simply paint the cell you want to add to the mask.
-In order to remove a cell, use the tool "label eraser" (Hotkey: "E").
+It will automatically load all images directly within the set folder, but not images in sub-directories. If annotations in YeastMate's format exist (```_mask.tif``` files for the mask and ```_detections.json``` files for the detected objects), they will be loaded and shown as well.
 
-# Labeling the cells
+## Navigating between images
 
-Before you start labeling your cells, make sure that all the cells you want identified are marked as an object in the single cell layer.
-Choose the correct layer (budding or mating) and then the right tool in the top left corner to label the involved cells (Also shown in the image below).
-To label multiple cells, use the tool called "add path" (Hotkey: "T"). When you label a mating event with a daughter make sure to label both parents and then the daughter. Once you clicked on all cells belonging to the same event, press "Escape" to exit the "add path" tool.
-Make sure the start and the end of all lines are inside the correct cells, so they get recognized by the program.
-To delete a label, you have to first select it with the "select vertices" (Hotkey: "D") tool and then click on the "delete selected shapes" tool (Hotkey: "Del" or "Backspace")
-If a line ends on the background instead of a cell, when trying to advance to the next image a keyerror will appear on the bottom right corner, showing a "0". In that case double check and correct all lines, which do not end on a marked cell.
+You can navigate between images by pressing ```Enter``` to get to the next image, and pressing the ```left arrow key``` to go back to the previous image. Pressing ```S``` will save the changes you did to the annotation layers and write them to disk (also overwriting previous annotations).
 
-# ![Screenshot](imgs/Tools.png)
+If you did changes to the annotation layers and go to another image without saving, a window will appear asking you whether to save or discard your changes. If you choose to discard the changes, they will be gone, and going back to this image will load the original annotations (if they exist).
 
-# Next image 
-Once you are done with labeling all the mating and budding events, as well as correcting the mask, press "Enter" to advance to the next image.
-As already mentioned before, if an error "0" appears, it means that a line ends outside of a labeled cell.
+Holding ```Space``` will allow you to zoom in and out of your images with the mousewheel and move the image by dragging it.
 
+## Annotating your images
 
-# Useful Hotkeys
+The annotation process is split into two separate steps:
 
-* Paintbrush      - "P"
-* Eraser          - "E"
-* Label cells     - "T"
-* Select label    - "D"
-* Erase selected  - "Del"
-* Next Image      - "Enter"
+* Annotation of all cells by drawing a mask of each cell into a segmentation layer.
+
+* Connecting cells that form zygotes or budding events.
+
+If you annotate images from scratch, it is recommended to import a segmentation mask of all single cells and then manually correct it, as drawing the cell masks is the most time consuming part.
+
+The masks are expected to be 2D images of the same shape as your images, with each cell mask having a unique, integer ID.
+
+![Screenshot](imgs/overview.png)
+
+### The single cell mask
+
+Click on the layer ```single cell``` to make changes to the mask layer. There are a few important tools to facilitate this step:
+
+![Screenshot](imgs/painting_tools.png)
+
+* The paint brush (blue) tool allows you to draw in your segmentations. ```Hotkey P```
+
+* The eraser tool (red) allows you to erase existing segmentations. ```Hotkey E```
+
+* The pipette tool (green) will set the ID tool to the ID of the selected cell. ```Hotkey ?```
+
+* The ID tool sets the cell ID that your paint brush will draw with (the eraser tool is not affected by this). If you correct specific cells, make sure to select their ID first with the pipette tool. If you want to draw a new cell in, make sure to choose an ID that is not used yet (e.g. start at a sufficiently high number if you correct existing annotations)
+
+Each cell has to be drawn in separately; cells that are already merged (e.g. two mothers within a zygote) should also be labelled separately. Make sure to only label  cells which you want the program to recognize, for example exclude cells, which are too much out of focus.
+
+### Connecting cells 
+
+Before you start connecting your cells, make sure that all the cells you want to connect are marked as an object in the single cell layer.
+
+Click on the layer ```mating``` or ```budding``` to make changes to that specific layer. While selecting the ```mating``` layer, you can only add mating events and the other way around. There are a few important tools to facilitate this step:
+
+![Screenshot](imgs/connection_tools.png)
+
+* The path tool (blue) allows you to add connected points to the layer. ```Hotkey T```
+
+* The select tool (green) allows you to select existing connections. ```Hotkey D```
+
+* The delete tool (red) will delete the selected connection. ```Hotkey Del```
+
+To connect cells, select the path tool and click on the cells after each other, and finish the connection by pressing ```Escape```. This will add a connection to the layer. The expected connections for the two layers are:
+
+* Mating: The two first points should be the two mother cells, with an optional third point for the daughter cells if it exists.
+
+* Budding: The first point should be the mother and the second point should be the daughter cell.
+
+YeastMate strictly requires this connection scheme for custom training and will fail if there are more or less points than expected. In case of a budding zygote, add the mating and budding connections separately. A single cell can have multiple connections.
+
+Make sure that each point of a connection lies within a segmented cell in the cell mask layer. If a point has no associated cell, an error message will appear when you try to save your annotation, giving you the chance to correct them.
+
+## Useful Hotkeys
+
+* Next Image      - ```Enter```
+* Previous Image  - ```left arrow key```
+* Save changes    - ```S```
+* Move/Zoom       = ```Space```
+* Paintbrush      - ```P```
+* Eraser          - ```E```
+* Connect cells     - ```T```
+* Select label    - ```D```
+* Erase selected  - ```Del```
+
+## Start Napari from command line
+
+To run the Napari tool yourself, download the [YeastMateBackend](https://github.com/hoerlteam/YeastMateBackend) repository and set up the Python environment as described in [Python - Installation](./environment.md).
+
+You can then start the annotation process with:
+
+``` bash
+python annotation.py /PATH/TO/YOUR/IMAGES
+```
+
+It takes the following non-optional command line argument:
+
+* ```--path``` : The path containing the images (and optionally annotations) that will be loaded.

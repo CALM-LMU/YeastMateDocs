@@ -5,7 +5,7 @@ nav:
     - Introduction: 'index.md'
     - GUI - Get Started: 'gui.md'
     - GUI - Settings: 'settings.md'
-    - GUI - Label your images: 'label.md'
+    - GUI - Annotate your images: 'label.md'
     - Fiji - Get Started: 'fiji.md'
     - Python - Installation: 'environment.md'
     - Python - Get Started: 'python.md'

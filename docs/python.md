@@ -16,7 +16,7 @@ python hueyserver.py
 
 It takes the following optional command line argument:
 
-* ```--port``` : The port on which the backend should listen on. Default is ```11002```
+* ```--port``` : The port on which the backend should listen on. Default is ```11002```.
 
 ### Detection backend
 
