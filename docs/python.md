@@ -30,7 +30,7 @@ It comes with multiple optional command line arguments:
 
 * ```--gpu``` : Add this flag if you want to run the Detection on GPU. Default is ```False```.
 * ```--gpu_index``` : The index of the GPU to use. Only used if ```--gpu```  flag is given. Default is ```0```.
-* ```--port``` : The port on which the backend should listen on. Default is ```11003```.
+* ```--port``` : The port on which the backend should listen on. Default is ```11005```.
 * ```--config``` : Path to the config file for the Detection. Only necessary if you re-trained the model. Default is ```'models/yeastmate.yaml'```.
 * ```--model``` : Path to the model weight file for the Detection. Only necessary if you re-trained the model. Default is ```'models/yeastmate_weights.pth'```.
 
