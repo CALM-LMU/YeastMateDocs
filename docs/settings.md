@@ -78,6 +78,18 @@ The detection job saves its results as a segmentation mask and a json file conta
 
 Settings include:
 
+* By default, cell labels in the cropped mask will be reassigned to: 
+
+    * mating 
+        * 1/2: mother 
+        * 3: daughter
+
+    * budding: 
+        * 1: mother 
+        * 2: daughter
+
+* If you wish to instead keep the original cell IDs from the uncropped mask, deselect this setting.
+
 * YeastMate will save the bounding boxes of the detected objects exactly around the respective segmentation. You can set a static crop size for all objects.
 
 * If you wish to instead just scale your size of the crop by a factor, you can set this factor here. As it will automatically crop exactly around the object, this setting can make the crops nicer.
