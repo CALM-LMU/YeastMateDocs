@@ -6,7 +6,7 @@ All settings come with a default preset with standard values. This default prese
 
 Here you can set up the two backends that perform the actual tasks - the IO backend responsible for reading and preprocessing your data and saving the results, and the detection backend that contains the machine learning model.
 
-Both backends can be run locally as prepackaged applications or be manually set up on remote servers. If you wish to run the local backends, leave the settings on local and click on ```Start backends``; this will open the two backends. If you run them remotely, you can set their remote IP and port here.
+Both backends can be run locally as prepackaged applications or be manually set up on remote servers. If you wish to run the local backends, leave the settings on local and click on ```Start backends```; this will open the two backends. If you run them remotely, you can set their remote IP and port here.
 
 The local detection backend will run on GPU by default, unless your system does not have a CUDA compatible GPU, in which case the backend will default to CPU mode. In some cases, even a CUDA compatible GPU will not be compatible with YeastMate, which runs on CUDA 10.2. This is currently the case for the newest Ampere generation GPUs (e.g. RTX 3000 series), and some very old GPUs. A warning message will appear in the detection backend window if your GPU is not compatible, in which case you should change the device setting to ```CPU``` in the user interface.
 
