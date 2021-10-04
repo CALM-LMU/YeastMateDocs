@@ -1,4 +1,4 @@
-# ![Logo](imgs/ym.png)
+# ![Logo](imgs/ym.PNG)
 
 YeastMate is a tool for the automated detection and segmentation of *S. cerevisae* cells and their mating and budding events, as well as a subclassification of the cells involved in these events into mother and daughter cells.
 
