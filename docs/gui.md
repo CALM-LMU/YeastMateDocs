@@ -60,35 +60,47 @@ After YeastMate detects cells in your images, it will save the single cell insta
   "metadata": {
     "height": 1608,
     "width": 1608,
-    "source": "Detection",
-    "detection_frame": {"t":"", "z":"", "c":""},
-    "box_format": "x1y1x2y2"
+    "source": "Detection",                          # "Annotation" or "Detection"
+    "detection_frame": {"t":"", "z":"", "c":""},    # position of 2D slice in image stacks
+    "box_format": "x1y1x2y2"                        # YeastMate saves boxes in this format
   },
   "detections": {
-    "1": {
-    "id": 1,
-    "box": [
+    "1": {            # dictionary key is the same as the cells "id"
+    "id": 1,          # unique id of the cell within the mask
+    "box": [          # bounding box of the cell in the format "x1y1x2y2"
       664,
       102,
       717,
       156
       ],
-    "class": [
-      "0",
-      "2.1"
+    "class": [        # list of class labels of the cell
+      "0",            # this object is a single cell ("0")
+      "2.1"           # and also a budding-mother ("2.1", see below)
       ],
     "score": [
-      0.982,
-      0.874
+      0.982,          # score of the cell detection
+      0.874           # each cell has a score for each class label
     ],
     "links": [
-      "1001"
-      ]
-    }
+      "1001"          # id of the compound object this cell belongs to
+      ]               # it can also belong to multiple compound objects
+    }                 # compound objects will contain links to their cells
     ...
   }
 }
 ```
+
+The classes are structured as follows:
+
+  * ```0```: single cell
+  * ```1```: mating compound object
+    * ```1.1```: mating - mother
+    * ```1.2```: mating - daughter
+  * ```2```: budding compound object
+    * ```2.1```: budding - mother
+    * ```2.2```: budding - daughter
+
+The IDs of the compound object don't correspond to any values within the segmentation mask, their mask can be built from the segmentation of their individual cells.
 
 ## Job dashboard
 
