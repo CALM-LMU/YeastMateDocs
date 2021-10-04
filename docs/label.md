@@ -1,10 +1,14 @@
 # Annotate your images
 
-YeastMate comes with a custom annotation tool built upon [Napari](https://napari.org). It allows you to inspect and correct YeastMate's output as well as annotating your own images from scratch for re-training the detection model.
+YeastMate comes with a custom annotation tool built upon [Napari](https://napari.org). It allows you to inspect and correct YeastMate's output as well as annotate your own images from scratch for re-training the detection model.
+
+# ![Screenshot](imgs/annotate.png)
 
 After selecting your image path in the Visualize/Annotate page in the user interface, the button ```Start annotation process``` will open up a new Napari window.
 
 It will automatically load all images directly within the set folder, but not images in sub-directories. If annotations in YeastMate's format exist (```_mask.tif``` files for the mask and ```_detections.json``` files for the detected objects), they will be loaded and shown as well.
+
+Note that our annotation tool currently only supports 2D images.
 
 ## Navigating between images
 
@@ -38,11 +42,11 @@ Click on the layer ```single cell``` to make changes to the mask layer. There ar
 
 * The eraser tool (red) allows you to erase existing segmentations. ```Hotkey E```
 
-* The pipette tool (green) will set the ID tool to the ID of the selected cell. ```Hotkey ?```
+* The pipette tool (green) will set the current label to the label of the selected cell. ```Hotkey ?```
 
-* The ID tool sets the cell ID that your paint brush will draw with (the eraser tool is not affected by this). If you correct specific cells, make sure to select their ID first with the pipette tool. If you want to draw a new cell in, make sure to choose an ID that is not used yet (e.g. start at a sufficiently high number if you correct existing annotations)
+    * The label sets the cell ID that your paint brush will draw with (the eraser tool is not affected by this; it will erase everything, not just the selected label). If you correct specific cells, make sure to select their label first with the pipette tool. If you want to draw a new cell in, make sure to choose a label that is not used yet (e.g. start at a sufficiently high number if you correct existing annotations)
 
-Each cell has to be drawn in separately; cells that are already merged (e.g. two mothers within a zygote) should also be labelled separately. Make sure to only label  cells which you want the program to recognize, for example exclude cells, which are too much out of focus.
+Each cell has to be drawn in separately; cells that are already merged (e.g. two mothers within a zygote) should also be labelled separately. Make sure to only label cells which you want YeastMate to recognize, for example exclude cells which are too far out of focus.
 
 ### Connecting cells 
 
@@ -60,7 +64,7 @@ Click on the layer ```mating``` or ```budding``` to make changes to that specifi
 
 To connect cells, select the path tool and click on the cells after each other, and finish the connection by pressing ```Escape```. This will add a connection to the layer. The expected connections for the two layers are:
 
-* Mating: The two first points should be the two mother cells, with an optional third point for the daughter cells if it exists.
+* Mating: The first two points should be the two mother cells, with an optional third point for the daughter cell if it exists.
 
 * Budding: The first point should be the mother and the second point should be the daughter cell.
 

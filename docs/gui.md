@@ -112,7 +112,7 @@ This page shows the status of the backends and all currently queued and running 
 
 # ![Screenshot](imgs/annotate.png)
 
-This page allows you to inspect and correct the predicted objects and masks, or to annotate your images from scratch if you want to re-train the neural network. Given the path containing the images, it will open a separate [napari](https://napari.org) window.
+This page allows you to inspect and correct the predicted objects and masks, or to annotate your images from scratch if you want to re-train the neural network. Given the path containing the images, it will open a separate [napari](https://napari.org) window. Note that only 2D images are currently supported.
 
 Check [Label your images](./label.md) for more information on labelling your data.
 
