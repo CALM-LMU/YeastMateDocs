@@ -12,15 +12,15 @@ The local detection backend will run on GPU by default, unless your system does 
 
 # ![Screenshot](imgs/backends.png)
 
-* ```Run local IO backend:``` If you run the IO backend not locally, you can uncheck this setting and set the external IP and port.
+* ```Run local IO backend:``` If you run the IO backend on a remote server, you can uncheck this setting and set the external IP and port.
 
-* ```Run local detection backend:``` If you run the detection backend not locally, you can uncheck this setting and set the external IP and port.
+* ```Run local detection backend:``` If you run the detection backend on a remote server, you can uncheck this setting and set the external IP and port.
 
-* If you run the detection backend locallym you can set some additional settings. If you run it manually, you can set these settings via command-line arguments.
+* If you run the detection backend locally, you can set some additional settings. If you run it manually, you can set these settings via command-line arguments.
 
-* ```Run local detection backend on GPU or CPU:``` You can set the device the detection model runs on here.
+    * ```Run local detection backend on GPU or CPU:``` You can set the device the detection model runs on here.
 
-* ```Set path to model weight file:``` If you re-trained the detection model, you can set the path to your own config and model weights files.
+    * ```Set path to model configuration/weight file:``` If you re-trained the detection model, you can set the path to your own config and model weights files.
 
 ## Detection settings
 
@@ -44,19 +44,19 @@ This page contains the various settings for the detection backend:
 
 * ```Set score threshold for X:``` Detected objects are automatically discarded if their score is below 0.9 for single cells and 0.75 for mating and budding events. This should yield generally good results, but if you encounter too many false positives, you can set these thresholds higher, or lower if too many objects are missed.
 
-* ```Set the reference pixel size of the training images in nm:``` If you trained your own model with images with a different pixel size than 110nm, you can set your referenze pixel size of your training images here, so that the rescaling of images is done in relation to this pixel size.
+* ```Set the reference pixel size of the training images in nm:``` If you trained your own model with images with a different pixel size than 110nm, you can set your reference pixel size of your training images here, so that the rescaling of images is done in relation to this pixel size.
 
 ## Preprocessing settings
 
 This page contains the settings for preprocessing and alignment of your images. 
 
+**If you don't need to align your images, and you already have ImageJ-compatible tif images, you can skip the preprocessing step.** 
+
 YeastMate only supports tif/tiff files for the actual detection. If you have proprietary microscopy images (e.g. Nikon .nd2) or similar that can be openend by Bioformats, YeastMate can automatically convert them into ImageJ-like .tif files. This feature was only tested on Nikon .nd2 files, and while it should also work for Zeiss, Leica etc. files, you might have to convert your images first in ImageJ if this step fails.
 
-YeastMate can additionally perform alignment of microscopy images taken by two cameras. The different image channels can be assigned to the two cameras and set as reference channels for the alignment. You can also set a channel to be removed after alignment.
+YeastMate can additionally perform alignment of microscopy images taken by two cameras, see below for details.
 
-If you have time stacks, you can set them to be split into separate frame images. While the detection step can handle time steps, if you want to perform detection on every frame separately, you can split them here.
-
-If you don't need to align your images, and you already have ImageJ-compatible tif images, you can skip the preprocessing step. 
+If you have time stacks, you can set them to be split into separate frame images. As the detection will only be performed on one frame per file, you can use this setting if you want to perform detection on every frame separately.
 
 # ![Screenshot](imgs/preprocessing.png)
 
@@ -72,13 +72,11 @@ The alignment setting table works as follow:
 
 ## Crop settings
 
-The detection job saves its results as a segmentation mask and a json file containing additional metadata. This page contains the settings if you wish to crop objects in your images and masks. Cropped masks will only contain labelled cells from the cropped object.
+The detection job saves its results as a segmentation mask and a json file containing additional metadata (e.g. relationship between cells). This page contains settings for cropping objects in your images and masks. Cropped masks will only contain labelled cells from the cropped object.
 
 # ![Screenshot](imgs/crop.png)
 
-Settings include:
-
-* By default, cell labels in the cropped mask will be reassigned to: 
+* ```Reassing labels in every crop:``` By default, cell labels in the cropped mask will be reassigned to: 
 
     * mating 
         * ```1/2``` mother 
@@ -87,11 +85,11 @@ Settings include:
     * budding: 
         * ```1``` mother 
         * ```2``` daughter
+        
+    If you wish to instead keep the original cell IDs from the uncropped mask, deselect this setting.
 
-* ```Reassing labels in every crop:``` If you wish to instead keep the original cell IDs from the uncropped mask, deselect this setting.
+* ```Generate crops of fixed size?``` If you select this option, YeastMate will generate crops of a fixed square size around each detected object. You can set the size of the crops here.
 
-* ```Generate crops of fixed size?``` YeastMate will save the bounding boxes of the detected objects exactly around the respective segmentation. You can set a static crop size for all objects.
+* ```Scale bounding boxes of detected cells?``` If you wish to instead just scale your size of the crop by a factor, you can set this factor here. 
 
-* ```Scale bounding boxes of detected cells?``` If you wish to instead just scale your size of the crop by a factor, you can set this factor here. As it will automatically crop exactly around the object, this setting can make the crops nicer.
-
-* YeastMate can save crops of the detected objects of the original image and the segmentation mask. This can be set for each class separately, and also customized if you have different classes from your retrained network.
+* In the table below you can toggle whether to crop matings/buddings or not, and you can also assign a tag to each class. This tag will be used to generate the output file names, for example "FILENAME_mating_ID" for matings, "FILENAME_budding_ID" for buddings.
