@@ -6,7 +6,7 @@ If you want to run YeastMate without the user interface and its backends and use
 
 * A docker image that comes with Python and YeastMate already installed
 
-Of course, you can also just install Python and install all dependencies within the environment files manually via pip.
+Of course, you can also just install Python and install all dependencies within the environment files manually via pip following the ```requirements.txt``` file.
 
 Furthermore, if you want to run one or two of the backends (detection and IO) manually or remotely, you can easily run their respective Python scripts as long as you have Python with YeastMate's dependencies installed.
 
