@@ -52,7 +52,7 @@ YeastMate expects the input folder to contain TIFF files or a folder called ```y
 
 ### Output format
 
-After YeastMate detects cells in your images, it will save the single cell instances segmentation masks as ```[input_file_name]_mask.tif``` as well as asignments of the individual cells to multicellular events in a JSON file called ```[input_file_name]_detections.json```, which has the following format:
+After YeastMate detects cells in your images, it will save the single cell instances segmentation masks as ```[input_file_name]_mask.tif``` as well as asignments of the individual cells to transition events in a JSON file called ```[input_file_name]_detections.json```, which has the following format:
 
 ```json
 {
@@ -66,7 +66,7 @@ After YeastMate detects cells in your images, it will save the single cell insta
   },
   "detections": {
     "1": {            # dictionary key is the same as the cells "id"
-    "id": 1,          # unique id of the cell within the mask
+    "id": "1",        # unique id of the cell within the mask
     "box": [          # bounding box of the cell in the format "x1y1x2y2"
       664,
       102,
