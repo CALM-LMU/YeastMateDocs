@@ -12,39 +12,39 @@ The local detection backend will run on GPU by default, unless your system does 
 
 # ![Screenshot](imgs/backends.png)
 
-* If you run the IO backend not locally, you can uncheck this setting and set the external IP and port.
+* ```Run local IO backend:``` If you run the IO backend not locally, you can uncheck this setting and set the external IP and port.
 
-* If you run the detection backend not locally, you can uncheck this setting and set the external IP and port.
+* ```Run local detection backend:``` If you run the detection backend not locally, you can uncheck this setting and set the external IP and port.
 
 * If you run the detection backend locallym you can set some additional settings. If you run it manually, you can set these settings via command-line arguments.
 
-* You can set the device the detection model runs on here.
+* ```Run local detection backend on GPU or CPU:``` You can set the device the detection model runs on here.
 
-* If you re-trained the detection model, you can set the path to your own config and model weights files.
+* ```Set path to model weight file:``` If you re-trained the detection model, you can set the path to your own config and model weights files.
 
 ## Detection settings
 
 This page contains the various settings for the detection backend:
 
-* YeastMate detects objects on a non-fluorescent DIC/Bright-Field overview channel. If your images have multiple channels, check this setting and set the channel to detect on.
+* ```Do your images have multiple channels?``` YeastMate detects objects on a non-fluorescent DIC/Bright-Field overview channel. If your images have multiple channels, check this setting and set the channel to detect on.
 
-* YeastMate performs detection on single-plane images. If your image is a z-stack, check this setting, and select where a single plane will be taken from the stack (e.g. 50% for the middle slice).
+* ```Are your images z-stacks?``` YeastMate performs detection on single-plane images. If your image is a z-stack, check this setting, and select where a single plane will be taken from the stack (e.g. 50% for the middle slice).
 
-* If you wish to detect objects in a time-series, you can set the detection to be done on the first or last frame of your stack. If you wish to detect on every frame separately, please split your stack into single frames first (this can be set up in the preprocessing settings).
+* ```Are your images time-series?``` If you wish to detect objects in a time-series, you can set the detection to be done on the first or last frame of your stack. If you wish to detect on every frame separately, please split your stack into single frames first (this can be set up in the preprocessing settings).
 
-* YeastMate is trained on images acquired with a pixel size of 110nm. If this differs from your images, set your pixel size and the images will be rescaled to match the image scale of the model.
+* ```Set the pixel size of images in nm:``` YeastMate is trained on images acquired with a pixel size of 110nm. If this differs from your images, set your pixel size and the images will be rescaled to match the image scale of the model.
 
 # ![Screenshot](imgs/detection.png)
 
 ### Advanced detection settings
 
-Flip this switch to access advanced settings for the detection:
+```Do you want to change advanced settings?``` Flip this switch to access advanced settings for the detection:
 
-* YeastMate automatically performs image normalization on the 1.5-98.5% quantile. This yields good results for most images, but you can change the normalization here.
+* ```Set lower/upper quantile for normalization in %:``` YeastMate automatically performs image normalization on the 1.5-98.5% quantile. This yields good results for most images, but you can change the normalization here.
 
-* Detected objects are automatically discarded if their score is below 0.9 for single cells and 0.75 for mating and budding events. This should yield generally good results, but if you encounter too many false positives, you can set these thresholds higher, or lower if too many objects are missed.
+* ```Set score threshold for X:``` Detected objects are automatically discarded if their score is below 0.9 for single cells and 0.75 for mating and budding events. This should yield generally good results, but if you encounter too many false positives, you can set these thresholds higher, or lower if too many objects are missed.
 
-* If you trained your own model with images with a different pixel size than 110nm, you can set your referenze pixel size of your training images here, so that the rescaling of images is done in relation to this pixel size.
+* ```Set the reference pixel size of the training images in nm:``` If you trained your own model with images with a different pixel size than 110nm, you can set your referenze pixel size of your training images here, so that the rescaling of images is done in relation to this pixel size.
 
 ## Preprocessing settings
 
@@ -81,17 +81,17 @@ Settings include:
 * By default, cell labels in the cropped mask will be reassigned to: 
 
     * mating 
-        * 1/2: mother 
-        * 3: daughter
+        * ```1/2``` mother 
+        * ```3``` daughter
 
     * budding: 
-        * 1: mother 
-        * 2: daughter
+        * ```1``` mother 
+        * ```2``` daughter
 
-* If you wish to instead keep the original cell IDs from the uncropped mask, deselect this setting.
+* ```Reassing labels in every crop:``` If you wish to instead keep the original cell IDs from the uncropped mask, deselect this setting.
 
-* YeastMate will save the bounding boxes of the detected objects exactly around the respective segmentation. You can set a static crop size for all objects.
+* ```Generate crops of fixed size?``` YeastMate will save the bounding boxes of the detected objects exactly around the respective segmentation. You can set a static crop size for all objects.
 
-* If you wish to instead just scale your size of the crop by a factor, you can set this factor here. As it will automatically crop exactly around the object, this setting can make the crops nicer.
+* ```Scale bounding boxes of detected cells?``` If you wish to instead just scale your size of the crop by a factor, you can set this factor here. As it will automatically crop exactly around the object, this setting can make the crops nicer.
 
 * YeastMate can save crops of the detected objects of the original image and the segmentation mask. This can be set for each class separately, and also customized if you have different classes from your retrained network.
