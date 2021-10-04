@@ -7,8 +7,8 @@ nav:
     - GUI - Settings: 'settings.md'
     - GUI - Annotate your images: 'label.md'
     - Fiji - Get Started: 'fiji.md'
-    - Python - Installation: 'environment.md'
     - Python - Get Started: 'python.md'
+    - Python - Start Backends: 'backends.md'
     - Python - Train on your data: 'train.md'
 theme:
     name: readthedocs

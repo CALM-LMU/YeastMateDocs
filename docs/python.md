@@ -1,39 +1,87 @@
-# Python - Get Started
+# Setting up the Python environment
 
-After you set up your Python environment, you can run the backends manually, or use the YeastMate Python API to implement the detection in your own scripts. We provide example Jupyter Notebooks how to access the YeastMate detection functions.
+If you want to run YeastMate without the user interface and its backends and use it as a Python module directly to implement the detection in your Python scripts, we offer two simple solutions to set this environment up: 
 
-## Start the backends manually
+* Anaconda environment files which will automatically install all dependencies
 
-To start the backends, download the [YeastMateBackend](https://github.com/hoerlteam/YeastMateBackend) repository and set up the Python environment as described in [Python - Installation](./environment.md). Then activate your conda environment or enter your Docker container.
+* A docker image that comes with Python and YeastMate already installed
 
-### IO backend
+Of course, you can also just install Python and install all dependencies within the environment files manually via pip.
 
-You can start the IO backend with:
+Furthermore, if you want to run one or two of the backends (detection and IO) manually or remotely, you can easily run their respective Python scripts as long as you have Python with YeastMate's dependencies installed.
 
-``` bash
-python hueyserver.py
-```
+## Setting up a Conda Environment
 
-It takes the following optional command line argument:
+First of all, you need to download and install [Anaconda 3](https://www.anaconda.com/products/individual) and download the code repository from Github for the YeastMate Python module [https://github.com/hoerlteam/YeastMate](https://github.com/hoerlteam/YeastMate).
 
-* ```--port``` : The port on which the backend should listen on. Default is ```11002```.
-
-### Detection backend
-
-You can start the Detection backend with:
+You can then create your conda environment by navigating into the ```YeastMate``` folder and running the following command:
 
 ``` bash
-python yeastmate_server.py
+conda env create -f env_yeastmate_linux.yaml
 ```
 
-It comes with multiple optional command line arguments:
+You might have to substitute the last part of the filename with the actual environment file for your system (linux/win/mac) that you want to use. 
 
-* ```--gpu``` : Add this flag if you want to run the Detection on GPU. Default is ```False```.
-* ```--gpu_index``` : The index of the GPU to use. Only used if ```--gpu```  flag is given. Default is ```0```.
-* ```--port``` : The port on which the backend should listen on. Default is ```11005```.
-* ```--config``` : Path to the config file for the Detection. Only necessary if you re-trained the model. Default is ```'models/yeastmate.yaml'```.
-* ```--model``` : Path to the model weight file for the Detection. Only necessary if you re-trained the model. Default is ```'models/yeastmate_weights.pth'```.
+You can then activate the conda environment with:
+
+``` bash
+conda activate yeastmate
+```
 
 ## Use the YeastMate Python module
 
-You can also use the YeastMate Python module directly in your scripts. It's recommended to use the Jupyter Notebooks within the [YeastMate repository](https://github.com/hoerlteam/YeastMate) as a base.
+You can then use the YeastMate Python module directly in your scripts. To use the detection model, you need to additionally download our model weights file from [OSF](https://osf.io/287fr/?view_only=99d1fddb563b4253957f226c19c4113f) and add them to the `models` directory within the YeastMate repository. Alternatively you can also add your own model snapshots to this folder.
+
+To install the YeastMate module, navigate into the ```YeastMate``` folder and run the following command:
+
+``` bash
+pip install -e .
+```
+
+After installation, you can access most functionality of YeastMate via the ```YeastMatePredictor``` class:
+
+```python
+from yeastmatedetector.inference import YeastMatePredictor
+
+predictor = YeastMatePredictor('./models/yeastmate.yaml', './models/yeastmate_weights.pth')
+
+# load image as numpy array
+
+detections, mask = predictor.inference(your_image)
+```
+
+The [YeastMate repository](https://github.com/hoerlteam/YeastMate) contains an example notebook showcasing the Python API.
+
+## Setting up a Docker container
+
+First of all you need to have the Docker service installed. For Information on how to install Docker, refer to the [Docker homepage](https://docker.com).
+
+The Docker image can be found on [Docker hub](https://hub.docker.com/davidbunk/YeastMate). You can download it from the command line with the following command:
+
+``` bash
+docker pull davidbunk/yeastmate:latest
+```
+
+The image can then be spun into containers and run like any other Docker image. 
+
+If you want to use the (webservice) backends and expose them outside of the Docker container, you need to forward the internal container port that the backend is running on to the port you set in the user interface (default is 11002 for the IO backend and 11005 for the Detection backend).  
+
+If you need GPU inference, you'll also need to give the container GPU access via the ```--gpus all``` flag. 
+
+To run the detection backend with GPU support, run the following command:
+
+``` bash
+docker run -it -p HOSTPORT:CONTAINERPORT --shm-size=16G --rm --gpus all davidbunk/yeastmate:latest
+```
+
+To give the Docker container access to specific GPUs, you can specify the device:
+
+``` bash
+docker run -it -p HOSTPORT:CONTAINERPORT --shm-size=16G --rm --gpus '"device=0"' davidbunk/yeastmate:latest
+```
+
+The container will run until you quit with ```Ctrl-C```. If you want to disconnect from the Docker terminal while still keeping the processes inside running, you can use the shortcuts ```Ctrl-p``` and ```Ctrl-q``` after each other. You can re-attach to a running container using:
+
+``` bash
+docker attach ID_OF_CONTAINER
+```
