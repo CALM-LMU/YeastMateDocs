@@ -10,6 +10,6 @@ Alternatively, YeastMate can be used directly as a Python library or via an alte
 
 [Click here](./gui.md) to Get Started with the standalone application.
 
-[Click here](./environment.md) to Get Started with the Python module.
+[Click here](./python.md) to Get Started with the Python module.
 
 [Click here](./fiji.md) to Get Started with the Fiji plugin.
