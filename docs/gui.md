@@ -8,6 +8,8 @@ This will install the user interface, the Python data IO backend and the Python 
 
 The user interface and the packaged backends were tested on Windows 10, Ubuntu 18.04 and MacOS 11.5.2. Note that we currently do not support GPU-accelerated detection on Nvidia Ampere graphic cards (Geforce 30XX).
 
+**Note:** Both macOS and Windows10 might show a warning the first time you run YeastMate, as it is an unsigned application. On Windows, you can choose to open the application regardless in the advanced settings of the dialog. On macOS, follow the instructions at [https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac) on how to open unsigned applications.
+
 If any errors or bugs occur, you can report them at [https://github.com/hoerlteam/YeastMate/issues](https://github.com/hoerlteam/YeastMate/issues). 
 
 YeastMate for Windows requires the Microsoft Visual C++ libraries. While these are usually already installed on most systems, you can download them [here](https://www.microsoft.com/en-US/download/details.aspx?id=26368) and [here](https://aka.ms/vs/16/release/vc_redist.x64.exe).
