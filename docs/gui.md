@@ -2,7 +2,7 @@
 
 ## Installing the standalone YeastMate application
 
-YeastMate is available as a standalone application with prebuilt installers for Windows, Linux and Mac at [https://github.com/hoerlteam/YeastMate/releases](https://github.com/hoerlteam/YeastMate/releases). 
+YeastMate is available as a standalone application with prebuilt installers for Windows, Linux and Mac at [https://github.com/hoerlteam/YeastMate/releases](https://github.com/hoerlteam/YeastMate/releases) and [https://https://osf.io/287fr/](https://https://osf.io/287fr/) (faster download speed than Github). 
 
 This will install the user interface, the Python data IO backend and the Python detection backend (with GPU acceleration on Nvidia CUDA-capable GPUs). The backends are packaged with PyInstaller with all their dependencies and don't require a Python installation on your system. Both backends can then be started from within the GUI.
 
