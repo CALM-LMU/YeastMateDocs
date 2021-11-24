@@ -50,7 +50,7 @@ On the bottom of the card you can select the presets you set on their respective
 
 ### Input data format
 
-YeastMate expects the input folder to contain TIFF files or a folder called ```yeastmate-preprocessed``` containing TIFF files. We support multiple channels or timepoints in files, in which case the dimension order should be TZCYX (default for TIFF images saved by ImageJ/Fiji). If the dimension order of your images differs, you can optionally resave them in the correct format via the Preprocessing options.
+YeastMate expects the input folder to contain TIFF files or a folder called ```yeastmate-preprocessed``` containing TIFF files. We support multiple channels or timepoints in files, in which case the dimension order should be TZCYX (default for TIFF images saved by ImageJ/Fiji). The TIFF files have to be uncompressed. If the dimension order of your images differs or they are compressed, you can optionally resave them in the correct format via the Preprocessing options.
 
 ### Output format
 
