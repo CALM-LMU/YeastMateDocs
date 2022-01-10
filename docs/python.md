@@ -10,6 +10,8 @@ Of course, you can also just install Python and install all dependencies within 
 
 Furthermore, if you want to run one or two of the backends (detection and IO) manually or remotely, you can easily run their respective Python scripts as long as you have Python with YeastMate's dependencies installed.
 
+**Compatibility with M1 Macs:** Currently, not all dependencies of the YeastMate module seem to be available for macOS on the Apple M1 (arm64) architecture via conda, preventing the use of the Python module on M1 Macs. Note that the [prebuilt binaries for macOS](./gui.md) will work thanks to Apple’s Rosetta2 x86 emulation, though with suboptimal performance. 
+
 ## Setting up a Conda Environment
 
 First of all, you need to download and install [Anaconda 3](https://www.anaconda.com/products/individual) and download the code repository from Github for the YeastMate Python module [https://github.com/hoerlteam/YeastMate](https://github.com/hoerlteam/YeastMate).
