@@ -32,8 +32,6 @@ conda activate yeastmate
 
 ## Use the YeastMate Python module
 
-You can then use the YeastMate Python module directly in your scripts. To use the detection model, you need to additionally download our model weights file from [OSF](https://osf.io/287fr/?view_only=99d1fddb563b4253957f226c19c4113f) and add them to the `models` directory within the YeastMate repository. Alternatively you can also add your own model snapshots to this folder.
-
 To install the YeastMate module, navigate into the ```YeastMate``` folder and run the following command:
 
 ``` bash
@@ -52,7 +50,7 @@ predictor = YeastMatePredictor('./models/yeastmate.yaml')
 detections, mask = predictor.inference(your_image)
 ```
 
-By default, YeastMate will load the model weight file specified in the config file. This can either be a local path, or a weblink to a model file. If a remote file is set, YeastMate will download it into cache and reuse it; the default value in the config is our pre-trained model hosted on OSF.
+By default, YeastMate will load the model weight file specified in the config file. This can either be a local path, or a weblink to a model file. If a remote file is set, YeastMate will download it into cache and reuse it; the default value in the config is our pre-trained model hosted on [OSF](https://osf.io/287fr/?view_only=99d1fddb563b4253957f226c19c4113f).
 
 Alternatively, you can tell YeastMate to ignore the model path in the config and set the model path with a second argument like below. Note that this only works with local files, if you want to use a remote file you have to set the remote path in the config.
 
