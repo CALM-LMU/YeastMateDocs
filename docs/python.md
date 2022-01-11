@@ -45,11 +45,19 @@ After installation, you can access most functionality of YeastMate via the ```Ye
 ```python
 from yeastmatedetector.inference import YeastMatePredictor
 
-predictor = YeastMatePredictor('./models/yeastmate.yaml', './models/yeastmate_weights.pth')
+predictor = YeastMatePredictor('./models/yeastmate.yaml')
 
 # load image as numpy array
 
 detections, mask = predictor.inference(your_image)
+```
+
+By default, YeastMate will load the model weight file specified in the config file. This can either be a local path, or a weblink to a model file. If a remote file is set, YeastMate will download it into cache and reuse it; the default value in the config is our pre-trained model hosted on OSF.
+
+Alternatively, you can tell YeastMate to ignore the model path in the config and set the model path with a second argument like below. Note that this only works with local files, if you want to use a remote file you have to set the remote path in the config.
+
+```python
+predictor = YeastMatePredictor('./models/yeastmate.yaml', './models/yeastmate_weights.pth')
 ```
 
 The [YeastMate repository](https://github.com/hoerlteam/YeastMate) contains an example notebook showcasing the Python API.
