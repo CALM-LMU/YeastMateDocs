@@ -124,6 +124,10 @@ You can start a training run of the model on your own data after annotating it l
 
 Check [Python - Train on your data](./train.md) for more information on training on your data.
 
+## Tracking in time series
+
+If you want to detect cells in time series, note that the main YeastMate application will process all time points independently. If you want to track cells over time, we offer simple overlap-based tracking of the outputs of the standalone application through a Jupyter notebook [https://github.com/hoerlteam/YeastMate/blob/main/examples/tracking.ipynb](https://github.com/hoerlteam/YeastMate/blob/main/examples/tracking.ipynb) or through our [Fiji plugin](./fiji.md).
+
 ## Uninstalling YeastMate
 
 * On Windows, the cleanest way to remove YeastMate is via the Control Panel under ```Programs > Programs and Features```.
