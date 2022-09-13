@@ -10,9 +10,14 @@ The user interface and the packaged backends were tested on Windows 10, Ubuntu 1
 
 **Note:** Both macOS and Windows10 might show a warning the first time you run YeastMate, as it is an unsigned application. On Windows, you can choose to open the application regardless in the advanced settings of the dialog. On macOS, follow the instructions at [https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac) on how to open unsigned applications.
 
-If any errors or bugs occur, you can report them at [https://github.com/hoerlteam/YeastMate/issues](https://github.com/hoerlteam/YeastMate/issues). 
+**Before installing on Windows:**
 
 YeastMate for Windows requires the Microsoft Visual C++ libraries. While these are usually already installed on most systems, you can download them [here](https://www.microsoft.com/en-US/download/details.aspx?id=26368) and [here](https://aka.ms/vs/16/release/vc_redist.x64.exe).
+
+YeastMate is not compatible with Windows **N** versions, as these are missing important dependencies for image processing. These versions are distributed in European countries; you can look up your Windows version in the System Properties (Win+Pause shortcut). 
+You can manually install these dependencies at [Microsoft](https://www.microsoft.com/en-us/software-download/mediafeaturepack), and find more about the difference between normal and **N** Windows version [here](https://support.microsoft.com/en-us/topic/media-feature-pack-for-n-editions-of-windows-10-version-1607-b657cb70-33e7-1f11-7119-3b4b50be4e89).
+
+If any errors or bugs occur, you can report them at [https://github.com/hoerlteam/YeastMate/issues](https://github.com/hoerlteam/YeastMate/issues). 
 
 ## Starting the application and backends
 
